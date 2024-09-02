@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: Mikita
+    version: 1.0.0
+    description: A multipurpose entity that can interact with people through different means.
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    url: jdbc:sqlite:sqlite-database.db
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    database-platform: org.hibernate.community.dialect.SQLiteDialect
+    hibernate:
+      ddl-auto: update
+server:
+  error:
+    include-stacktrace: never
+discord:
+  token: ${DISCORD_BOT_TOKEN}
+  main-server-id: ${DISCORD_MAIN_SERVER_ID}
+  force-slash-commands-update: false
