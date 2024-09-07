@@ -1,5 +1,5 @@
 package mikita.user;
 
-public enum MikitaRoles {
+public enum MikitaRole {
     ADMIN, WEB_USER, DISCORD_USER;
 }
