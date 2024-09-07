@@ -1,6 +1,7 @@
 package mikita.user;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,11 +13,15 @@ import java.util.stream.Collectors;
 @Entity
 public class MikitaUser implements UserDetails, Serializable {
 
+    @Id
     @Column(length = 36)
     private String username;
 
+    @Getter
+    private String email;
+
     @Column(length = 128)
-    private String password;
+    private String password; // This should be the encoded password
 
     @Enumerated
     @ElementCollection(fetch = FetchType.EAGER)
@@ -26,9 +31,10 @@ public class MikitaUser implements UserDetails, Serializable {
         this.roles = new HashSet<>();
     }
 
-    public MikitaUser(String username, String password) {
+    public MikitaUser(String username, String email, String password) {
         this();
         this.username = username;
+        this.email = email;
         this.password = password;
     }
 
